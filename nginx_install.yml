@@ -1,7 +1,7 @@
 ---
 - name: Deploy web server
   hosts: web_servers
-  become: yes
+  become: true
   vars:
     package_name: nginx
     service_name: nginx
@@ -12,7 +12,7 @@
       apt:
         name: "{{ package_name }}"
         state: present
-      when: ansible_os_family == "Ubuntu"
+      
       
     - name: start nginx service
       service:
